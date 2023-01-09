@@ -4,12 +4,13 @@
     {
         static void Main(string[] args)
         {
-            DirectoryInfo di = new DirectoryInfo("c:\\");
+            DirectoryInfo di = new DirectoryInfo("c:\\Program Files");
             var dirList = di.GetDirectories();
+
             foreach (var folder in dirList)
             {
                 Console.WriteLine(folder.Name);
-                Don(folder);
+                Don(folder);  
             }
 
         }
@@ -19,9 +20,17 @@
             try
             {
                 var dirList = di.GetDirectories();
+
                 foreach (var folder in dirList)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(folder.Name);
+
+                    foreach (var file in folder.GetFiles())
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(file.Name);  
+                    };
                     Don(folder);
                 }
 
